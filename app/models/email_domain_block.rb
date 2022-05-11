@@ -13,6 +13,11 @@
 #
 
 class EmailDomainBlock < ApplicationRecord
+  self.ignored_columns = %w(
+    ips
+    last_refresh_at
+  )
+
   include DomainNormalizable
 
   belongs_to :parent, class_name: 'EmailDomainBlock', optional: true
@@ -27,7 +32,7 @@ class EmailDomainBlock < ApplicationRecord
     @history ||= Trends::History.new('email_domain_blocks', id)
   end
 
-  def self.block?(domain_or_domains, ips: [], attempt_ip: nil)
+  def self.block?(domain_or_domains, attempt_ip: nil)
     domains = Array(domain_or_domains).map do |str|
       domain = begin
         if str.include?('@')
@@ -48,10 +53,7 @@ class EmailDomainBlock < ApplicationRecord
 
     blocked = domains.any?(&:nil?)
 
-    scope = where(domain: domains)
-    scope = scope.or(where('ips && ARRAY[?]::inet[]', ips)) if ips.any?
-
-    scope.find_each do |block|
+    where(domain: domains).find_each do |block|
       blocked = true
       block.history.add(attempt_ip) if attempt_ip.present?
     end
