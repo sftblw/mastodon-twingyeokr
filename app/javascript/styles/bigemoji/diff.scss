@@ -1,0 +1,58 @@
+$emoji-enlarge-time: 40ms;
+
+// bigger emojis
+.status__content,
+.detailed-status .status__content,
+.account__header__bio {
+  .emojione {
+    --emoji-size: 1.5em;
+    width: var(--emoji-size, 36px);
+    height: var(--emoji-size, 36px);
+    font-size: var(--emoji-size, 36px);
+    transition: transform $emoji-enlarge-time ease;
+    
+    &:hover {
+        transform: scale(2);
+    }
+  }
+}
+
+
+// enlarge only (names)
+.display-name,
+.notification__display-name,
+.account__header__tabs__name {
+  .emojione {
+    transition: transform $emoji-enlarge-time linear;
+    vertical-align: center;
+
+    &:hover {
+      transform: scale(2);
+    }
+  }
+  
+}
+
+
+// don't crop enlarged emojis as possible
+.status__info {
+  .status__display-name, .display-name {
+    overflow-x: hidden;
+    overflow-y: visible;
+  }
+}
+
+
+// special case: collapsed article
+.status__content  {
+  overflow: visible;
+  &.status__content--collapsed {
+    overflow-y: hidden; // poor man's solution
+  }
+}
+
+
+// visual modifications
+.status__info {
+  align-items: flex-start;  // align time info to top (visual satisfaction)
+}

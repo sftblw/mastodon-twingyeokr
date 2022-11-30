@@ -8,3 +8,5 @@ twvariant-wide-extra: styles/twvariant-wide-extra.scss
 goyang:  styles/goyang.scss
 myeongjo:  styles/myeongjo.scss
 myeongjo_kronly:  styles/myeongjo_kronly.scss
+
+bigemoji: styles/bigemoji.scss
