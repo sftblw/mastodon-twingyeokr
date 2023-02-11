@@ -5,8 +5,4 @@ mastodon-light: styles/mastodon-light.scss
 twvariant-wide: styles/twvariant-wide.scss
 twvariant-wide-extra: styles/twvariant-wide-extra.scss
 
-goyang:  styles/goyang.scss
-myeongjo:  styles/myeongjo.scss
-myeongjo_kronly:  styles/myeongjo_kronly.scss
-
 bigemoji: styles/bigemoji.scss
