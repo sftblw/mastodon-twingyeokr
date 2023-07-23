@@ -5,10 +5,16 @@ $emoji-enlarge-time: 40ms;
 .detailed-status .status__content,
 .account__header__bio {
   .emojione {
-    --emoji-size: 1.5em;
-    width: var(--emoji-size, 36px);
-    height: var(--emoji-size, 36px);
+    --emoji-size: 3em;
+    
     font-size: var(--emoji-size, 36px);
+    
+    width: auto;
+    min-width: 1em;
+    max-width: 90%;
+    
+    height: 1em;
+
     transition: transform $emoji-enlarge-time ease;
     
     &:hover {
